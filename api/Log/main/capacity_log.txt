@@ -1,0 +1,89 @@
+--------------------- Starting Situation (Input) ---------------------
+Stations:
+   ID Capacity
+0  S1        5
+1  S2        5
+Lines:
+   ID StartStation EndStation Length Capacity
+0  L1           S1         S2      1        3
+Trains:
+   ID StartStation Speed Capacity
+0  T1           S1     1        1
+1  T2           S1     1        1
+2  T3           S1     1        1
+3  T4           S1     1        1
+4  T5           S1     1        1
+Passengers:
+   ID StartStation Destination GroupSize ExpectedArrival
+0  P1           S1          S2         1               4
+1  P2           S1          S2         1               4
+2  P3           S1          S2         1               4
+
+--------------------- Preparation ---------------------
+Maximal rounds before emergency break of endless loop because of deadlock: 2
+(2 x latest expected arrival of a passenger)
+--------------------- Round 1 ---------------------
+-- Actions --
+
+Passenger P1 boards on Train T5
+Passenger P2 boards on Train T4
+Passenger P3 boards on Train T3
+Train T1: No Passengers on Train and no Passengers to be picked up
+Train T1: [] waits in Station S1, route [], passengers []
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S1, route [], passengers []
+Train T1: [] stays on Location S1
+Train T2: [] stays on Location S1
+
+--------------------- Round 2 ---------------------
+-- Actions --
+
+Train T3: No Passenger to be picked up
+Train T3: Passengers on board ['P3'], drive to Passenger with highest need on Train: S2
+Train T3: ['S2'] starts on Line L1
+Train T3: ['S2'] leaves Line L1 arriving in Station S2
+Train T4: No Passenger to be picked up
+Train T4: Passengers on board ['P2'], drive to Passenger with highest need on Train: S2
+Train T4: ['S2'] starts on Line L1
+Train T4: ['S2'] leaves Line L1 arriving in Station S2
+Train T5: No Passenger to be picked up
+Train T5: Passengers on board ['P1'], drive to Passenger with highest need on Train: S2
+Train T5: ['S2'] starts on Line L1
+Train T5: ['S2'] leaves Line L1 arriving in Station S2
+Train T1: No Passengers on Train and no Passengers to be picked up
+Train T1: [] waits in Station S1, route [], passengers []
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S1, route [], passengers []
+Train T1: [] stays on Location S1
+Train T2: [] stays on Location S1
+
+--------------------- Round 3 ---------------------
+-- Actions --
+
+! Passenger P1 arrived at its final destination on round 3 with a delay of 0 rounds
+! Passenger P2 arrived at its final destination on round 3 with a delay of 0 rounds
+! Passenger P3 arrived at its final destination on round 3 with a delay of 0 rounds
+Train T1: No Passengers on Train and no Passengers to be picked up
+Train T1: [] waits in Station S1, route [], passengers []
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S1, route [], passengers []
+Train T1: [] stays on Location S1
+Train T2: [] stays on Location S1
+
+-------------------------------------------------------------
+--------------------- End on Round 3 ---------------------
+-------------------------------------------------------------
+Ended successfully: Yes
+Total delay:0
+
+Station S1: Trains = ['T1', 'T2'], Remaining Capacity = 3, Passengers = [], Lines = ['L1']
+Station S2: Trains = ['T3', 'T4', 'T5'], Remaining Capacity = 2, Passengers = [], Lines = ['L1']
+Line L1: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S1', 'S2'], Length = 1.0
+Train T1: Location =S1 (3 Round(s)) Passengers =[], Destination =, Remaining Capacity =1
+Train T2: Location =S1 (3 Round(s)) Passengers =[], Destination =, Remaining Capacity =1
+Train T3: Location =S2 (0 Round(s)) Passengers =[], Destination =S2, Remaining Capacity =1
+Train T4: Location =S2 (0 Round(s)) Passengers =[], Destination =S2, Remaining Capacity =1
+Train T5: Location =S2 (0 Round(s)) Passengers =[], Destination =S2, Remaining Capacity =1
+[X] Passenger P1: Delay = 0, Location = S2, Destination = S2, Size = 1, Time = 4
+[X] Passenger P2: Delay = 0, Location = S2, Destination = S2, Size = 1, Time = 4
+[X] Passenger P3: Delay = 0, Location = S2, Destination = S2, Size = 1, Time = 4

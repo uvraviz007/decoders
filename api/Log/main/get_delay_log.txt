@@ -1,0 +1,52 @@
+--------------------- Starting Situation (Input) ---------------------
+Stations:
+   ID Capacity
+0  S1        5
+1  S2        5
+Lines:
+   ID StartStation EndStation Length Capacity
+0  L1           S1         S2      8        3
+Trains:
+   ID StartStation Speed Capacity
+0  T1           S1     5      100
+Passengers:
+   ID StartStation Destination GroupSize ExpectedArrival
+0  P1           S1          S2       100               1
+
+--------------------- Preparation ---------------------
+Maximal rounds before emergency break of endless loop because of deadlock: 2
+(2 x latest expected arrival of a passenger)
+--------------------- Round 1 ---------------------
+-- Actions --
+
+Passenger P1 boards on Train T1
+
+--------------------- Round 2 ---------------------
+-- Actions --
+
+Train T1: No Passenger to be picked up
+Train T1: Passengers on board ['P1'], drive to Passenger with highest need on Train: S2
+Train T1: ['S2'] starts on Line L1
+Train T1: ['S2'] drives on Line L1
+
+--------------------- Round 3 ---------------------
+-- Actions --
+
+Train T1: ['S2'] leaves Line L1 arriving in Station S2
+
+--------------------- Round 4 ---------------------
+-- Actions --
+
+! Passenger P1 arrived at its final destination on round 4 with a delay of 3 rounds
+
+-------------------------------------------------------------
+--------------------- End on Round 4 ---------------------
+-------------------------------------------------------------
+Ended successfully: Yes
+Total delay:3
+
+Station S1: Trains = [], Remaining Capacity = 5, Passengers = [], Lines = ['L1']
+Station S2: Trains = ['T1'], Remaining Capacity = 4, Passengers = [], Lines = ['L1']
+Line L1: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S1', 'S2'], Length = 8.0
+Train T1: Location =S2 (0 Round(s)) Passengers =[], Destination =S2, Remaining Capacity =100
+[X] Passenger P1: Delay = 3, Location = S2, Destination = S2, Size = 100, Time = 1

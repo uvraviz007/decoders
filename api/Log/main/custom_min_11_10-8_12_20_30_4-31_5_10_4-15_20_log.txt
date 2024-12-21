@@ -1,0 +1,390 @@
+--------------------- Starting Situation (Input) ---------------------
+Stations:
+     ID Capacity
+0    S1        7
+1    S2        4
+2    S3        3
+3    S4        5
+4    S5        8
+5    S6        7
+6    S7        6
+7    S8        2
+8    S9        9
+9   S10        2
+10  S11        1
+Lines:
+     ID StartStation EndStation   Length Capacity
+0    L1           S1        S11  7.66677        3
+1    L2           S1         S3   9.6688        1
+2    L3           S1         S4  8.86328        1
+3    L4           S1         S6  6.92426        2
+4    L5           S1         S7  8.65981        3
+5    L6           S1         S9  7.60386        1
+6    L7           S2        S11  6.84944        2
+7    L8           S2         S4  7.66318        4
+8    L9           S2         S6  9.00802        1
+9   L10           S2         S7  7.44898        2
+10  L11           S2         S8  7.79277        2
+11  L12           S3        S10  8.18386        1
+12  L13           S3        S11  6.88428        2
+13  L14           S3         S5    8.153        4
+14  L15           S3         S8  5.03044        4
+15  L16           S3         S9  9.47793        2
+16  L17           S4        S11   8.6304        3
+17  L18           S4         S5  8.30717        1
+18  L19           S4         S6  7.81122        2
+19  L20           S4         S7  5.81519        2
+20  L21           S5         S6  8.78379        4
+21  L22           S5         S8  9.76253        2
+22  L23           S6        S10  8.76949        2
+23  L24           S6        S11  7.53847        2
+24  L25           S6         S7   6.4056        2
+25  L26           S6         S8  5.70968        2
+26  L27           S6         S9  9.32103        2
+27  L28           S8        S10  9.52285        3
+28  L29           S8         S9  7.95725        4
+29  L30           S9        S10  9.06175        3
+30  L31           S9        S11  6.26418        4
+Trains:
+   ID StartStation     Speed Capacity
+0  T1            *   5.84189       22
+1  T2            *  11.99903       23
+2  T3            *  11.30074       22
+3  T4            *  11.32748       22
+4  T5           S7  10.78273       22
+5  T6           S9   5.72814       27
+6  T7           S4   9.43535       24
+7  T8           S4  10.83488       23
+Passengers:
+     ID StartStation Destination GroupSize ExpectedArrival
+0    P1           S9          S8         5               2
+1    P2           S8          S9         4               2
+2    P3           S5          S6        14               2
+3    P4           S3          S7        10               4
+4    P5           S2          S6         5               2
+5    P6           S2         S11        13               2
+6    P7          S10          S3         5               2
+7    P8          S11         S10         8               4
+8    P9           S5          S8        17               2
+9   P10           S5          S9         2               4
+10  P11           S9          S8         8               2
+11  P12           S5          S7         4               3
+12  P13           S9         S10        18               2
+13  P14          S11          S7        16               4
+14  P15           S4          S5         6               1
+
+--------------------- Preparation ---------------------
+Train T2: Starting Station = S5
+Train T4: Starting Station = S11
+Train T3: Starting Station = S2
+Train T1: Starting Station = S5
+Maximal rounds before emergency break of endless loop because of deadlock: 1000
+(2 x latest expected arrival of a passenger)
+--------------------- Round 1 ---------------------
+-- Actions --
+
+Passenger P15 boards on Train T7
+Passenger P1 boards on Train T6
+Passenger P2 stays in Station S8 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P3 boards on Train T2
+Passenger P5 boards on Train T3
+Passenger P6 boards on Train T3
+Passenger P7 stays in Station S10 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P9 boards on Train T1
+Passenger P11 boards on Train T6
+Passenger P13 stays in Station S9 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P12 boards on Train T2
+Passenger P4 stays in Station S3 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P8 boards on Train T4
+Passenger P10 boards on Train T1
+Passenger P14 stays in Station S11 because there is no Train that has enough capacity and drives to his desired Station.
+Train T8: No Passengers, drive to Passenger with highest need: P2 (S8)
+Train T8: ['S2', 'S8'] starts on Line L8
+Train T8: ['S2', 'S8'] leaves Line L8 arriving in Station S2
+Train T5: No Passengers, drive to Passenger with highest need: P2 (S8)
+Train T5: ['S2', 'S8'] starts on Line L10
+Train T5: ['S2', 'S8'] leaves Line L10 arriving in Station S2
+
+--------------------- Round 2 ---------------------
+-- Actions --
+
+Passenger P2 stays in Station S8 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P7 stays in Station S10 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P13 stays in Station S9 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P4 stays in Station S3 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P14 stays in Station S11 because there is no Train that has enough capacity and drives to his desired Station.
+Train T7: Passengers on board ['P15'], drive to Passenger with highest need on Train: S5
+Train T7: ['S5'] starts on Line L18
+Train T7: ['S5'] leaves Line L18 arriving in Station S5
+Train T2: Passengers on board ['P3', 'P12'], drive to Passenger with highest need on Train: S6
+Train T2: ['S6'] starts on Line L21
+Train T2: ['S6'] leaves Line L21 arriving in Station S6
+Train T3: Passengers on board ['P5', 'P6'], drive to Passenger with highest need on Train: S6
+Train T3: ['S6'] starts on Line L9
+Train T3: ['S6'] leaves Line L9 arriving in Station S6
+Train T1: No Passenger to be picked up
+Train T1: Passengers on board ['P9', 'P10'], drive to Passenger with highest need on Train: S8
+Train T1: ['S8'] starts on Line L22
+Train T1: ['S8'] drives on Line L22
+Train T6: Passengers on board ['P1', 'P11'], drive to Passenger with highest need on Train: S8
+Train T6: ['S8'] starts on Line L29
+Train T6: ['S8'] drives on Line L29
+Train T4: Passengers on board ['P8'], drive to Passenger with highest need on Train: S10
+Train T4: ['S3', 'S10'] starts on Line L13
+Train T4: ['S3', 'S10'] leaves Line L13 arriving in Station S3
+Train T8: No Passengers, drive to Passenger with highest need: P2 (S8)
+Train T8: ['S8'] starts on Line L11
+Train T8: ['S8'] leaves Line L11 arriving in Station S8
+Train T5: No Passengers, drive to Passenger with highest need: P2 (S8)
+Train T5: ['S8'] starts on Line L11
+Train T5: ['S8'] leaves Line L11 arriving in Station S8
+
+--------------------- Round 3 ---------------------
+-- Actions --
+
+! Passenger P15 arrived at its final destination on round 3 with a delay of 2 rounds
+! Passenger P3 arrived at its final destination on round 3 with a delay of 1 rounds
+! Passenger P5 arrived at its final destination on round 3 with a delay of 1 rounds
+Passenger P2 boards on Train T5
+Passenger P7 stays in Station S10 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P13 stays in Station S9 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P4 boards on Train T4
+Passenger P14 stays in Station S11 because there is no Train that has enough capacity and drives to his desired Station.
+Train T1: ['S8'] wants to arrive in Station S8 but has to wait, until another Train is leaving the Station.
+	Blocked Trains: ['T7', 'T2', 'T3', 'T5', 'T4']
+	Trains in Station S8: ['T8', 'T5']
+	Found a Train to exchange locations: T8 (S8)
+Train T6: ['S8'] wants to arrive in Station S8 but has to wait, until another Train is leaving the Station.
+	Blocked Trains: ['T7', 'T2', 'T3', 'T5', 'T4', 'T8', 'T1']
+	Trains in Station S8: ['T5', 'T1']
+	There is no Train that wants to depart from this Station in this round
+Train T6: ['S8'] waits on Line L29 until another Train leaves Station S8
+Train T6: ['S8'] stays on Location L29
+
+--------------------- Round 4 ---------------------
+-- Actions --
+
+! Passenger P9 arrived at its final destination on round 4 with a delay of 2 rounds
+Passenger P7 stays in Station S10 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P13 stays in Station S9 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P14 stays in Station S11 because there is no Train that has enough capacity and drives to his desired Station.
+Train T6: ['S8'] wants to arrive in Station S8 but has to wait, until another Train is leaving the Station.
+	Blocked Trains: ['T1']
+	Trains in Station S8: ['T5', 'T1']
+	There is no Train that wants to depart from this Station in this round
+Train T6: ['S8'] waits on Line L29 until another Train leaves Station S8
+Train T3: Passengers on board ['P6'], drive to Passenger with highest need on Train: S11
+Train T3: ['S11'] starts on Line L24
+Train T3: ['S11'] leaves Line L24 arriving in Station S11
+Train T5: Passengers on board ['P2'], drive to Passenger with highest need on Train: S9
+Train T5: ['S9'] starts on Line L29
+Train T5: ['S9'] leaves Line L29 arriving in Station S9
+Train T2: Passengers on board ['P12'], drive to Passenger with highest need on Train: S7
+Train T2: ['S7'] starts on Line L25
+Train T2: ['S7'] leaves Line L25 arriving in Station S7
+Train T4: No Passenger to be picked up
+Train T4: Passengers on board ['P8', 'P4'], drive to Passenger with highest need on Train: S7
+Train T4: ['S1', 'S7'] starts on Line L2
+Train T4: ['S1', 'S7'] leaves Line L2 arriving in Station S1
+Train T8: [] leaves Line L22 arriving in Station S5
+Train T7: No Passengers, drive to Passenger with highest need: P7 (S10)
+Train T7: ['S3', 'S10'] starts on Line L14
+Train T7: ['S3', 'S10'] leaves Line L14 arriving in Station S3
+Train T6: ['S8'] stays on Location L29
+
+--------------------- Round 5 ---------------------
+-- Actions --
+
+! Passenger P2 arrived at its final destination on round 5 with a delay of 3 rounds
+! Passenger P6 arrived at its final destination on round 5 with a delay of 3 rounds
+! Passenger P12 arrived at its final destination on round 5 with a delay of 2 rounds
+Passenger P7 stays in Station S10 because there is no Train that has enough capacity and drives to his desired Station.
+Passenger P13 boards on Train T5
+Passenger P14 boards on Train T3
+Train T6: ['S8'] leaves Line L29 arriving in Station S8
+Train T4: No Passenger to be picked up
+Train T4: Passengers on board ['P8', 'P4'], drive to Passenger with highest need on Train: S7
+Train T4: ['S7'] starts on Line L5
+Train T4: ['S7'] leaves Line L5 arriving in Station S7
+Train T1: Passengers on board ['P10'], drive to Passenger with highest need on Train: S9
+Train T1: ['S9'] starts on Line L29
+Train T1: ['S9'] drives on Line L29
+Train T8: No Passengers, drive to Passenger with highest need: P7 (S10)
+Train T8: ['S3', 'S10'] starts on Line L14
+Train T8: ['S3', 'S10'] leaves Line L14 arriving in Station S3
+Train T7: No Passengers, drive to Passenger with highest need: P7 (S10)
+Train T7: ['S10'] starts on Line L12
+Train T7: ['S10'] leaves Line L12 arriving in Station S10
+
+--------------------- Round 6 ---------------------
+-- Actions --
+
+! Passenger P1 arrived at its final destination on round 6 with a delay of 4 rounds
+! Passenger P11 arrived at its final destination on round 6 with a delay of 4 rounds
+! Passenger P4 arrived at its final destination on round 6 with a delay of 2 rounds
+Passenger P7 boards on Train T7
+Train T5: No Passenger to be picked up
+Train T5: Passengers on board ['P13'], drive to Passenger with highest need on Train: S10
+Train T5: ['S10'] starts on Line L30
+Train T5: ['S10'] leaves Line L30 arriving in Station S10
+Train T3: No Passenger to be picked up
+Train T3: Passengers on board ['P14'], drive to Passenger with highest need on Train: S7
+Train T3: ['S1', 'S7'] starts on Line L1
+Train T3: ['S1', 'S7'] leaves Line L1 arriving in Station S1
+Train T1: ['S9'] leaves Line L29 arriving in Station S9
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S7, route [], passengers []
+Train T8: No Passengers on Train and no Passengers to be picked up
+Train T8: [] waits in Station S3, route [], passengers []
+Train T2: [] stays on Location S7
+Train T8: [] stays on Location S3
+
+--------------------- Round 7 ---------------------
+-- Actions --
+
+! Passenger P13 arrived at its final destination on round 7 with a delay of 5 rounds
+! Passenger P10 arrived at its final destination on round 7 with a delay of 3 rounds
+Train T7: No Passenger to be picked up
+Train T7: Passengers on board ['P7'], drive to Passenger with highest need on Train: S3
+Train T7: ['S3'] starts on Line L12
+Train T7: ['S3'] leaves Line L12 arriving in Station S3
+Train T4: No Passenger to be picked up
+Train T4: Passengers on board ['P8'], drive to Passenger with highest need on Train: S10
+Train T4: ['S6', 'S10'] starts on Line L25
+Train T4: ['S6', 'S10'] leaves Line L25 arriving in Station S6
+Train T3: No Passenger to be picked up
+Train T3: Passengers on board ['P14'], drive to Passenger with highest need on Train: S7
+Train T3: ['S7'] starts on Line L5
+Train T3: ['S7'] leaves Line L5 arriving in Station S7
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S7, route [], passengers []
+Train T8: No Passengers on Train and no Passengers to be picked up
+Train T8: [] waits in Station S3, route [], passengers []
+Train T6: No Passengers on Train and no Passengers to be picked up
+Train T6: [] waits in Station S8, route [], passengers []
+Train T2: [] stays on Location S7
+Train T8: [] stays on Location S3
+Train T6: [] stays on Location S8
+
+--------------------- Round 8 ---------------------
+-- Actions --
+
+! Passenger P7 arrived at its final destination on round 8 with a delay of 6 rounds
+! Passenger P14 arrived at its final destination on round 8 with a delay of 4 rounds
+Train T4: No Passenger to be picked up
+Train T4: Passengers on board ['P8'], drive to Passenger with highest need on Train: S10
+Train T4: ['S10'] starts on Line L23
+Train T4: ['S10'] leaves Line L23 arriving in Station S10
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S7, route [], passengers []
+Train T8: No Passengers on Train and no Passengers to be picked up
+Train T8: [] waits in Station S3, route [], passengers []
+Train T5: No Passengers on Train and no Passengers to be picked up
+Train T5: [] waits in Station S10, route [], passengers []
+Train T1: No Passengers on Train and no Passengers to be picked up
+Train T1: [] waits in Station S9, route [], passengers []
+Train T6: No Passengers on Train and no Passengers to be picked up
+Train T6: [] waits in Station S8, route [], passengers []
+Train T2: [] stays on Location S7
+Train T8: [] stays on Location S3
+Train T5: [] stays on Location S10
+Train T1: [] stays on Location S9
+Train T6: [] stays on Location S8
+
+--------------------- Round 9 ---------------------
+-- Actions --
+
+! Passenger P8 arrived at its final destination on round 9 with a delay of 5 rounds
+Train T2: No Passengers on Train and no Passengers to be picked up
+Train T2: [] waits in Station S7, route [], passengers []
+Train T3: No Passengers on Train and no Passengers to be picked up
+Train T3: [] waits in Station S7, route [], passengers []
+Train T8: No Passengers on Train and no Passengers to be picked up
+Train T8: [] waits in Station S3, route [], passengers []
+Train T5: No Passengers on Train and no Passengers to be picked up
+Train T5: [] waits in Station S10, route [], passengers []
+Train T7: No Passengers on Train and no Passengers to be picked up
+Train T7: [] waits in Station S3, route [], passengers []
+Train T1: No Passengers on Train and no Passengers to be picked up
+Train T1: [] waits in Station S9, route [], passengers []
+Train T6: No Passengers on Train and no Passengers to be picked up
+Train T6: [] waits in Station S8, route [], passengers []
+Train T2: [] stays on Location S7
+Train T3: [] stays on Location S7
+Train T8: [] stays on Location S3
+Train T5: [] stays on Location S10
+Train T7: [] stays on Location S3
+Train T1: [] stays on Location S9
+Train T6: [] stays on Location S8
+
+-------------------------------------------------------------
+--------------------- End on Round 9 ---------------------
+-------------------------------------------------------------
+Ended successfully: Yes
+Total delay:47
+
+Station S1: Trains = [], Remaining Capacity = 7, Passengers = [], Lines = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6']
+Station S2: Trains = [], Remaining Capacity = 4, Passengers = [], Lines = ['L7', 'L8', 'L9', 'L10', 'L11']
+Station S3: Trains = ['T8', 'T7'], Remaining Capacity = 1, Passengers = [], Lines = ['L2', 'L12', 'L13', 'L14', 'L15', 'L16']
+Station S4: Trains = [], Remaining Capacity = 5, Passengers = [], Lines = ['L3', 'L8', 'L17', 'L18', 'L19', 'L20']
+Station S5: Trains = [], Remaining Capacity = 8, Passengers = [], Lines = ['L14', 'L18', 'L21', 'L22']
+Station S6: Trains = [], Remaining Capacity = 7, Passengers = [], Lines = ['L4', 'L9', 'L19', 'L21', 'L23', 'L24', 'L25', 'L26', 'L27']
+Station S7: Trains = ['T2', 'T3'], Remaining Capacity = 4, Passengers = [], Lines = ['L5', 'L10', 'L20', 'L25']
+Station S8: Trains = ['T6'], Remaining Capacity = 1, Passengers = [], Lines = ['L11', 'L15', 'L22', 'L26', 'L28', 'L29']
+Station S9: Trains = ['T1'], Remaining Capacity = 8, Passengers = [], Lines = ['L6', 'L16', 'L27', 'L29', 'L30', 'L31']
+Station S10: Trains = ['T5', 'T4'], Remaining Capacity = 0, Passengers = [], Lines = ['L12', 'L23', 'L28', 'L30']
+Station S11: Trains = [], Remaining Capacity = 1, Passengers = [], Lines = ['L1', 'L7', 'L13', 'L17', 'L24', 'L31']
+Line L1: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S1', 'S11'], Length = 7.66677
+Line L2: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S1', 'S3'], Length = 9.6688
+Line L3: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S1', 'S4'], Length = 8.86328
+Line L4: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S1', 'S6'], Length = 6.92426
+Line L5: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S1', 'S7'], Length = 8.65981
+Line L6: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S1', 'S9'], Length = 7.60386
+Line L7: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S2', 'S11'], Length = 6.84944
+Line L8: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S2', 'S4'], Length = 7.66318
+Line L9: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S2', 'S6'], Length = 9.00802
+Line L10: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S2', 'S7'], Length = 7.44898
+Line L11: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S2', 'S8'], Length = 7.79277
+Line L12: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S3', 'S10'], Length = 8.18386
+Line L13: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S3', 'S11'], Length = 6.88428
+Line L14: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S3', 'S5'], Length = 8.153
+Line L15: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S3', 'S8'], Length = 5.03044
+Line L16: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S3', 'S9'], Length = 9.47793
+Line L17: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S4', 'S11'], Length = 8.6304
+Line L18: Trains = [], Remaining Capacity = 1, Connecting Stations = ['S4', 'S5'], Length = 8.30717
+Line L19: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S4', 'S6'], Length = 7.81122
+Line L20: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S4', 'S7'], Length = 5.81519
+Line L21: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S5', 'S6'], Length = 8.78379
+Line L22: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S5', 'S8'], Length = 9.76253
+Line L23: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S6', 'S10'], Length = 8.76949
+Line L24: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S6', 'S11'], Length = 7.53847
+Line L25: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S6', 'S7'], Length = 6.4056
+Line L26: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S6', 'S8'], Length = 5.70968
+Line L27: Trains = [], Remaining Capacity = 2, Connecting Stations = ['S6', 'S9'], Length = 9.32103
+Line L28: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S8', 'S10'], Length = 9.52285
+Line L29: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S8', 'S9'], Length = 7.95725
+Line L30: Trains = [], Remaining Capacity = 3, Connecting Stations = ['S9', 'S10'], Length = 9.06175
+Line L31: Trains = [], Remaining Capacity = 4, Connecting Stations = ['S9', 'S11'], Length = 6.26418
+Train T2: Location =S7 (4 Round(s)) Passengers =[], Destination =, Remaining Capacity =23
+Train T4: Location =S10 (0 Round(s)) Passengers =[], Destination =S10, Remaining Capacity =22
+Train T3: Location =S7 (1 Round(s)) Passengers =[], Destination =, Remaining Capacity =22
+Train T8: Location =S3 (4 Round(s)) Passengers =[], Destination =, Remaining Capacity =23
+Train T5: Location =S10 (2 Round(s)) Passengers =[], Destination =, Remaining Capacity =22
+Train T7: Location =S3 (1 Round(s)) Passengers =[], Destination =, Remaining Capacity =24
+Train T1: Location =S9 (2 Round(s)) Passengers =[], Destination =, Remaining Capacity =22
+Train T6: Location =S8 (3 Round(s)) Passengers =[], Destination =, Remaining Capacity =27
+[X] Passenger P15: Delay = 2, Location = S5, Destination = S5, Size = 6, Time = 1
+[X] Passenger P1: Delay = 4, Location = S8, Destination = S8, Size = 5, Time = 2
+[X] Passenger P2: Delay = 3, Location = S9, Destination = S9, Size = 4, Time = 2
+[X] Passenger P3: Delay = 1, Location = S6, Destination = S6, Size = 14, Time = 2
+[X] Passenger P5: Delay = 1, Location = S6, Destination = S6, Size = 5, Time = 2
+[X] Passenger P6: Delay = 3, Location = S11, Destination = S11, Size = 13, Time = 2
+[X] Passenger P7: Delay = 6, Location = S3, Destination = S3, Size = 5, Time = 2
+[X] Passenger P9: Delay = 2, Location = S8, Destination = S8, Size = 17, Time = 2
+[X] Passenger P11: Delay = 4, Location = S8, Destination = S8, Size = 8, Time = 2
+[X] Passenger P13: Delay = 5, Location = S10, Destination = S10, Size = 18, Time = 2
+[X] Passenger P12: Delay = 2, Location = S7, Destination = S7, Size = 4, Time = 3
+[X] Passenger P4: Delay = 2, Location = S7, Destination = S7, Size = 10, Time = 4
+[X] Passenger P8: Delay = 5, Location = S10, Destination = S10, Size = 8, Time = 4
+[X] Passenger P10: Delay = 3, Location = S9, Destination = S9, Size = 2, Time = 4
+[X] Passenger P14: Delay = 4, Location = S7, Destination = S7, Size = 16, Time = 4
